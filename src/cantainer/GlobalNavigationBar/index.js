@@ -6,10 +6,10 @@ import InlineInnerBox from "../../component/InlineInnerBox";
 const GlobalNavigationBar = () => {
   return (
     <NavContainer>
-      <InlineInnerBox style={{ display: "inline-flex", justifyContent: "space-around" }}>
-        <div style={{ width: "100px" }}>wanted</div>
+      <InlineInnerBox>
+        <div style={{ width: "100px", border: "1px solid red" }}>wanted</div>
 
-        <Categorybox>
+        <Categorybox style={{ border: "1px solid red" }}>
           <div>탐색</div>
           <div>커리어 성장</div>
           <div>직군별 연봉</div>
@@ -18,13 +18,17 @@ const GlobalNavigationBar = () => {
           <div>프리랜서</div>
         </Categorybox>
 
-        <IconBox>
-          <div>돋보기</div>
-          <div>알림</div>
-          <div>마이페이지</div>
-        </IconBox>
+        <div style={{ display: "flex", justifyContent: "space-around" }}>
+          <IconBox style={{ border: "1px solid red" }}>
+            <div>돋보기</div>
+            <div>알림</div>
+            <div>마이페이지</div>
+          </IconBox>
 
-        <EnterpriseServiceButton>기업서비스</EnterpriseServiceButton>
+          <div style={{ width: "150px", borderLeft: "1px solid #e0e2e3", marginLeft: "30px" }}>
+            <EnterpriseServiceButton>기업서비스</EnterpriseServiceButton>
+          </div>
+        </div>
       </InlineInnerBox>
     </NavContainer>
   );
@@ -33,13 +37,13 @@ const GlobalNavigationBar = () => {
 export default GlobalNavigationBar;
 
 const NavContainer = styled(Container)`
-  margin-top: 30px;
+  margin-top: 20px;
 `;
 
 const Categorybox = styled.div`
   display: inline-flex;
   justify-content: space-between;
-  width: 300px;
+  width: 400px;
 `;
 
 const IconBox = styled.div`
@@ -53,5 +57,6 @@ const EnterpriseServiceButton = styled.button`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  width: 200px;
+  width: 100px;
+  margin-left: 30px;
 `;
