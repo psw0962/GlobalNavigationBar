@@ -1,33 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Container from "../../component/Container";
 import InlineInnerBox from "../../component/InlineInnerBox";
+import * as Text from "../../component/Text";
+
+// Images
+import logo from "../../static/images/logo.svg";
+import search from "../../static/images/search.svg";
+import bell from "../../static/images/bell.svg";
 
 const GlobalNavigationBar = () => {
+  const [searchCategory, setSearchCategory] = useState(false);
+
   return (
     <NavContainer>
       <InlineInnerBox>
-        <div style={{ width: "100px", border: "1px solid red" }}>wanted</div>
+        <img src={logo} alt="logo" style={{ width: "90px" }} />
 
-        <Categorybox style={{ border: "1px solid red" }}>
-          <div>탐색</div>
-          <div>커리어 성장</div>
-          <div>직군별 연봉</div>
-          <div>이력서</div>
-          <div>매치업</div>
-          <div>프리랜서</div>
+        <Categorybox>
+          <CategoryDiv>
+            <CategoryText>탐색</CategoryText>
+          </CategoryDiv>
+
+          <CategoryDiv>
+            <CategoryText>커리어 성장</CategoryText>
+          </CategoryDiv>
+
+          <CategoryDiv>
+            <CategoryText>직군별 연봉</CategoryText>
+          </CategoryDiv>
+
+          <CategoryDiv>
+            <CategoryText>이력서</CategoryText>
+          </CategoryDiv>
+
+          <CategoryDiv>
+            <CategoryText>매치업</CategoryText>
+          </CategoryDiv>
+
+          <CategoryDiv>
+            <CategoryText>프리랜서</CategoryText>
+          </CategoryDiv>
         </Categorybox>
 
-        <div style={{ display: "flex", justifyContent: "space-around" }}>
-          <IconBox style={{ border: "1px solid red" }}>
-            <div>돋보기</div>
-            <div>알림</div>
-            <div>마이페이지</div>
+        <div style={{ display: "inline-flex", justifyContent: "space-around", marginTop: "5px" }}>
+          <IconBox>
+            <img src={search} alt="search" style={{ cursor: "pointer" }} />
+            <img src={bell} alt="bell" style={{ cursor: "pointer" }} />
+            <MypageDiv style={{ cursor: "pointer" }} />
           </IconBox>
 
-          <div style={{ width: "150px", borderLeft: "1px solid #e0e2e3", marginLeft: "30px" }}>
-            <EnterpriseServiceButton>기업서비스</EnterpriseServiceButton>
-          </div>
+          <PartitionDiv />
+          <EnterpriseServiceButton>기업 서비스</EnterpriseServiceButton>
         </div>
       </InlineInnerBox>
     </NavContainer>
@@ -43,13 +67,17 @@ const NavContainer = styled(Container)`
 const Categorybox = styled.div`
   display: inline-flex;
   justify-content: space-between;
-  width: 400px;
+  align-items: center;
+  width: 500px;
+  height: 30px;
+  margin-top: 5px;
 `;
 
 const IconBox = styled.div`
   display: inline-flex;
-  justify-content: space-between;
-  width: 200px;
+  justify-content: space-around;
+  width: 160px;
+  height: 30px;
 `;
 
 const EnterpriseServiceButton = styled.button`
@@ -58,5 +86,45 @@ const EnterpriseServiceButton = styled.button`
   align-items: center;
   cursor: pointer;
   width: 100px;
-  margin-left: 30px;
+  height: 30px;
+  margin-left: 10px;
+  border: 1px solid #e5e6e7;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 400;
+  background-color: white;
+`;
+
+const MypageDiv = styled.div`
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ecedee;
+  border-radius: 15px;
+`;
+
+const PartitionDiv = styled.div`
+  display: block;
+  content: "";
+  width: 1px;
+  height: 13px;
+  background-color: #e1e2e3;
+  margin: 10px 20px 10px 20px;
+}
+`;
+
+const CategoryDiv = styled.div`
+  display: inline-block;
+  :hover {
+    border-bottom: solid #3366ff;
+  }
+`;
+
+const CategoryText = styled(Text.FontSize18)`
+  color: black;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.45;
+  letter-spacing: normal;
+  cursor: pointer;
 `;
