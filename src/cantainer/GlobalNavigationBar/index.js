@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+
+// Components
 import Container from "../../component/Container";
-import InlineInnerBox from "../../component/InlineInnerBox";
 import * as Text from "../../component/Text";
+import InlineInnerBox from "../../component/InlineInnerBox";
+import SearchTab from "./SearchTab";
 
 // Images
 import logo from "../../static/images/logo.svg";
@@ -10,59 +13,61 @@ import search from "../../static/images/search.svg";
 import bell from "../../static/images/bell.svg";
 
 const GlobalNavigationBar = () => {
-  const [searchCategory, setSearchCategory] = useState(false);
+  const [searchCategory, setSearchCategory] = useState("none");
 
   return (
-    <NavContainer>
-      <InlineInnerBox>
-        <img src={logo} alt="logo" style={{ width: "90px" }} />
+    <>
+      {/* GlobalNavBar */}
+      <Container style={{ marginTop: "20px" }}>
+        <InlineInnerBox style={{ width: "1200px" }}>
+          <img src={logo} alt="logo" style={{ width: "90px" }} />
 
-        <Categorybox>
-          <CategoryDiv>
-            <CategoryText>탐색</CategoryText>
-          </CategoryDiv>
+          <Categorybox>
+            <SearchCategoryDiv onMouseEnter={() => setSearchCategory("inline-block")} onMouseLeave={() => setSearchCategory("none")}>
+              <CategoryText>탐색</CategoryText>
+            </SearchCategoryDiv>
 
-          <CategoryDiv>
-            <CategoryText>커리어 성장</CategoryText>
-          </CategoryDiv>
+            <CategoryDiv>
+              <CategoryText>커리어 성장</CategoryText>
+            </CategoryDiv>
 
-          <CategoryDiv>
-            <CategoryText>직군별 연봉</CategoryText>
-          </CategoryDiv>
+            <CategoryDiv>
+              <CategoryText>직군별 연봉</CategoryText>
+            </CategoryDiv>
 
-          <CategoryDiv>
-            <CategoryText>이력서</CategoryText>
-          </CategoryDiv>
+            <CategoryDiv>
+              <CategoryText>이력서</CategoryText>
+            </CategoryDiv>
 
-          <CategoryDiv>
-            <CategoryText>매치업</CategoryText>
-          </CategoryDiv>
+            <CategoryDiv>
+              <CategoryText>매치업</CategoryText>
+            </CategoryDiv>
 
-          <CategoryDiv>
-            <CategoryText>프리랜서</CategoryText>
-          </CategoryDiv>
-        </Categorybox>
+            <CategoryDiv>
+              <CategoryText>프리랜서</CategoryText>
+            </CategoryDiv>
+          </Categorybox>
 
-        <div style={{ display: "inline-flex", justifyContent: "space-around", marginTop: "5px" }}>
-          <IconBox>
-            <img src={search} alt="search" style={{ cursor: "pointer" }} />
-            <img src={bell} alt="bell" style={{ cursor: "pointer" }} />
-            <MypageDiv style={{ cursor: "pointer" }} />
-          </IconBox>
+          <div style={{ display: "inline-flex", justifyContent: "space-around", marginTop: "5px" }}>
+            <IconBox>
+              <img src={search} alt="search" style={{ cursor: "pointer" }} />
+              <img src={bell} alt="bell" style={{ cursor: "pointer" }} />
+              <MypageDiv style={{ cursor: "pointer" }} />
+            </IconBox>
 
-          <PartitionDiv />
-          <EnterpriseServiceButton>기업 서비스</EnterpriseServiceButton>
-        </div>
-      </InlineInnerBox>
-    </NavContainer>
+            <PartitionDiv />
+            <EnterpriseServiceButton>기업 서비스</EnterpriseServiceButton>
+          </div>
+        </InlineInnerBox>
+      </Container>
+
+      {/* Search Tab */}
+      <SearchTab searchCategory={searchCategory} />
+    </>
   );
 };
 
 export default GlobalNavigationBar;
-
-const NavContainer = styled(Container)`
-  margin-top: 20px;
-`;
 
 const Categorybox = styled.div`
   display: inline-flex;
@@ -113,7 +118,12 @@ const PartitionDiv = styled.div`
 `;
 
 const CategoryDiv = styled.div`
-  display: inline-block;
+  :hover {
+    border-bottom: solid #3366ff;
+  }
+`;
+
+const SearchCategoryDiv = styled.div`
   :hover {
     border-bottom: solid #3366ff;
   }
