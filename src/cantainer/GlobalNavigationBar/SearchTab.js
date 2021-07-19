@@ -8,7 +8,7 @@ import ColumnInnerBox from "../../component/ColumnInnerBox";
 // Images
 import angle from "../../static/images/angle.svg";
 
-const SearchTab = (props) => {
+const SearchTab = ({ searchCategory }) => {
   const sales = ["기업영업", "외부영업", "영업 관리자", "기술영업", "주요고객 담당자", "솔루션 컨설턴트", "해외영업"];
   const media = ["콘텐츠 크리에이터", "PD", "영상 편집가", "에디터", "비디오 제작", "작가", "출판 기획자"];
   const hr = ["인사담당", "리크루터", "조직문화", "평가/보상", "헤드헌터", "HRD", "HRBP"];
@@ -18,7 +18,7 @@ const SearchTab = (props) => {
 
   return (
     <>
-      <CustomContainer style={{ display: props.searchCategory }}>
+      <CustomContainer style={{ display: searchCategory ? "inline-block" : "none" }}>
         <InlineInnerBox style={{ width: "1200px" }}>
           {/* sales */}
           <CustomColumnInnerBox>
@@ -146,7 +146,7 @@ const CustomUl = styled.ul`
 const CustomLi = styled.li`
   margin-bottom: 7px;
   color: #b3b3b3;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
 `;
 
@@ -155,7 +155,7 @@ const UlTitle = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 12px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
 `;
 
