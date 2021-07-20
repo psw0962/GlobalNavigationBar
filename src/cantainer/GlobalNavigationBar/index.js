@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Container from "../../component/Container";
 import * as Text from "../../component/Text";
 import SearchTab from "./SearchTab";
-import MobileGlobalNavigationBar from "./Mobile/index";
+import MobileGlobalNavigationBar from "../../cantainer/GlobalNavigationBar/Mobile/index";
 
 // Images
 import logo from "../../static/images/logo.svg";
@@ -86,8 +86,6 @@ const GlobalNavigationBar = () => {
       <SearchTabDiv>
         <SearchTab searchCategory={searchCategory} />
       </SearchTabDiv>
-
-      <MobileGlobalNavigationBar />
     </>
   );
 };
